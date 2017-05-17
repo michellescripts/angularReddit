@@ -5,17 +5,20 @@
    controller: function () {
      const vm = this
      vm.links = [
-              {title: 'Bootswatch', body: 'Great way to use colors', author: 'Michelle', imageUrl: 'https://pbs.twimg.com/profile_images/504444173521403905/n6FsWiMQ.png'},
-              {title: 'Bootswatch', body: 'Great way to use colors', author: 'Michelle', imageUrl: 'https://pbs.twimg.com/profile_images/504444173521403905/n6FsWiMQ.png'}
+              {title: 'Bootswatch', body: 'Great way to use colors', author: 'Michelle', votes: 0, imageUrl: 'https://pbs.twimg.com/profile_images/504444173521403905/n6FsWiMQ.png'},
+              {title: 'Bootswatch', body: 'Great way to use colors', author: 'Michelle', votes: 0, imageUrl: 'https://pbs.twimg.com/profile_images/504444173521403905/n6FsWiMQ.png'}
      ]
      vm.addlink = function () {
-       console.log('clicked@')
        vm.links.push(vm.link)
        delete vm.link
      }
      vm.deletelink = function (e, link) {
        e.preventDefault()
        vm.links.splice(vm.links.indexOf(link), 1)
+     }
+     vm.increaseVotes = function (e, link) {
+       e.preventDefault()
+       link.votes++
      }
    },
     // <div ng-show="linkform">
@@ -123,7 +126,10 @@
                     <h2>Title: {{link.title}}</h2>
                     <h3>Author: {{link.author}}</h3>
                     <p>Body: {{link.body}}</p>
-                    <p><a href="#" ng-click="$ctrl.deletelink($event, link)">Delete</a></p>
+                    <p> Votes: {{link.votes}}</p>
+                    <button class="btn btn-info" ng-click="$ctrl.increaseVotes($event, link)">&uarr;</button>
+                    <button class="btn btn-success">&darr;</button>
+                    <button ng-click="$ctrl.deletelink($event, link)" class="btn btn-warning">Delete</button>
                   </div>
 
                   <div class=".col-md-4">
