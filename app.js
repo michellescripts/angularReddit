@@ -1,5 +1,4 @@
-// (function () {
-//   'use strict'
+(function () {
   angular.module('app', [])
 	 .component('redditpage', {
    controller: function () {
@@ -31,5 +30,6 @@
        }
      }
    },
-		templateUrl: './templates/mytemp.html'
+   templateUrl: './templates/mytemp.html'
  })
+})()
