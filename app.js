@@ -20,6 +20,14 @@
        e.preventDefault()
        link.votes++
      }
+     vm.decreaseVotes = function (e, link) {
+       e.preventDefault()
+       if (link.votes > 0) {
+         link.votes--
+       } else {
+       link.votes = 0
+     }
+     }
    },
     // <div ng-show="linkform">
     			template: `
@@ -128,7 +136,7 @@
                     <p>Body: {{link.body}}</p>
                     <p> Votes: {{link.votes}}</p>
                     <button class="btn btn-info" ng-click="$ctrl.increaseVotes($event, link)">&uarr;</button>
-                    <button class="btn btn-success">&darr;</button>
+                    <button class="btn btn-success" ng-click="$ctrl.decreaseVotes($event, link)">&darr;</button>
                     <button ng-click="$ctrl.deletelink($event, link)" class="btn btn-warning">Delete</button>
                   </div>
 
