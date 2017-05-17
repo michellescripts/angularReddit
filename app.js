@@ -25,8 +25,8 @@
        if (link.votes > 0) {
          link.votes--
        } else {
-       link.votes = 0
-     }
+         link.votes = 0
+       }
      }
    },
     // <div ng-show="linkform">
@@ -122,10 +122,16 @@
             </section>
 
 
-          <h1> Links </h1>
+          <h1> All Links </h1>
 
-            <section class="list .col-md-12">
-              <div ng-repeat="link in $ctrl.links">
+
+                  <div class="filter container">
+                  <input ng-model="filterLinks" type="text" class="form-control" name="filter" id="filter" >
+                  <button class="btn btn-default">Filter</button>
+                  </div>
+
+            <section class="list containter .col-md-12">
+              <div ng-repeat="link in $ctrl.links | filter:filterLinks">
 
               <div class="container panel">
               <div class="row">
