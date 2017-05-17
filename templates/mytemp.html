@@ -102,10 +102,12 @@
          <div class="sort container">
            <label class="label label-info">Sort:</label>
            <!-- <select ng-model="selected" ng-options="f.votes for f in links | orderBy:'votes'"> -->
-           <select ng-model="sortLinks" class="form-control">
-             <option value=""></option>
+           <select ng-model="sortLinks" class="btn btn-primary">
+             <option value="">---Select---</option>
              <option value="votes">Votes</option>
              <option value="title">Title</option>
+             <option value="date">Date</option>
+              <!-- ng-click="formOpen = !formOpen" -->
            </select>
 
          </div>
@@ -125,6 +127,22 @@
            <h3>Author: {{link.author}}</h3>
            <p>Body: {{link.body}}</p>
            <p> Votes: {{link.votes}}</p>
+           <p>Date: {{link.date}}</p>
+
+           <div class="panel panel-default">
+             <div class="panel-heading" ng-click="commentOpen = !commentOpen">{{link.comments.length || 0}} Comments</div>
+             <div ng-show="commentOpen" class="panel-body">
+               <div ng-repeat="comment in link.comments">
+                  <p>{{comment}}</p>
+               </div>
+               <!-- For comments -->
+               <form name="$ctrl.commentform" ng-submit=$ctrl.addComment(link)>
+                 <input ng-model="$ctrl.link.comments" required type="text" class="form-control" name="comments" id="comments">
+                  <button class="btn btn-default" type="submit" ng-click="commentOpen = !commentOpen">Add Comment</button>
+              </form>
+             </div>
+           </div>
+
            <button class="btn btn-info" ng-click="$ctrl.increaseVotes($event, link)">&uarr;</button>
            <button class="btn btn-success" ng-click="$ctrl.decreaseVotes($event, link)">&darr;</button>
            <button ng-click="$ctrl.deletelink($event, link)" class="btn btn-warning">Delete</button>
