@@ -100,7 +100,14 @@
          </div>
 
          <div class="sort container">
-           <label class="label label-info">Sort:</label><input ng-model="sortLinks">
+           <label class="label label-info">Sort:</label>
+           <!-- <select ng-model="selected" ng-options="f.votes for f in links | orderBy:'votes'"> -->
+           <select ng-model="sortLinks" class="form-control">
+             <option value=""></option>
+             <option value="votes">Votes</option>
+             <option value="title">Title</option>
+           </select>
+
          </div>
 
 
