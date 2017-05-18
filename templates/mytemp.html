@@ -88,12 +88,7 @@
      <button class="btn btn-default" type="submit" ng-click="formOpen = !formOpen">Add Link</button>
    </form>
    </div>
-
    </section>
-
-
- <h1> All Links </h1>
-
 
          <div class="search container">
            <label class="label label-info">Search:</label><input ng-model="searchLinks">
@@ -119,38 +114,37 @@
    <section class="list containter .col-md-12">
      <div ng-repeat="link in $ctrl.links | filter:searchLinks | orderBy:sortLinks">
 
-     <div class="container panel">
+     <div class="container panel text-center">
      <div class="row">
 
-         <div class=".col-md-4">
+
+          <img src={{link.imageUrl}} width="50">
            <h2>Title: {{link.title}}</h2>
            <h3>Author: {{link.author}}</h3>
            <p>Body: {{link.body}}</p>
-           <p> Votes: {{link.votes}}</p>
            <p>Date: {{link.date}}</p>
 
-           <div class="panel panel-default">
-             <div class="panel-heading" ng-click="commentOpen = !commentOpen">{{link.comments.length || 0}} Comments</div>
-             <div ng-show="commentOpen" class="panel-body">
-               <div ng-repeat="comment in link.comments">
-                  <p>{{comment}}</p>
-               </div>
-               <!-- For comments -->
-               <form name="$ctrl.commentform" ng-submit=$ctrl.addComment(link)>
-                 <input ng-model="$ctrl.link.comments" required type="text" class="form-control" name="comments" id="comments">
-                  <button class="btn btn-default" type="submit" ng-click="commentOpen = !commentOpen">Add Comment</button>
-              </form>
-             </div>
-           </div>
 
+           <p> Votes: {{link.votes}}</p>
            <button class="btn btn-info" ng-click="$ctrl.increaseVotes($event, link)">&uarr;</button>
            <button class="btn btn-success" ng-click="$ctrl.decreaseVotes($event, link)">&darr;</button>
            <button ng-click="$ctrl.deletelink($event, link)" class="btn btn-warning">Delete</button>
+
+
+         <div class="panel panel-default">
+           <div class="panel-heading" ng-click="commentOpen = !commentOpen">{{link.comments.length || 0}} Comments</div>
+           <div ng-show="commentOpen" class="panel-body">
+             <div ng-repeat="comment in link.comments">
+                <p>{{comment}}</p>
+             </div>
+             <!-- For comments -->
+             <form name="$ctrl.commentform" ng-submit=$ctrl.addComment(link)>
+               <input ng-model="$ctrl.link.comments" required type="text" class="form-control" name="comments" id="comments">
+                <button class="btn btn-default" type="submit" ng-click="commentOpen = !commentOpen">Add Comment</button>
+            </form>
+           </div>
          </div>
 
-         <div class=".col-md-4">
-           <img src={{link.imageUrl}} width="50">
-         </div>
 
      </div>
      </div>
