@@ -1,9 +1,8 @@
 <div class="flex sort-bar">
-  <div class="row">
-    <div class="search container">
+    <div class="search ">
         <label class="label label-info">Search:</label><input ng-model="searchLinks">
     </div>
-    <div class="sort container">
+    <div class="sort ">
         <label class="label label-info">Sort:</label>
         <!-- <select ng-model="selected" ng-options="f.votes for f in links | orderBy:'votes'"> -->
         <select ng-model="sortLinks" class="btn btn-warning">
@@ -14,9 +13,8 @@
             <!-- ng-click="formOpen = !formOpen" -->
         </select>
     </div>
-  </div>
-<section class="linkform pull-right">
-  <button class="btn btn-warning" ng-click="formOpen = !formOpen">New Post</button>
+<section class="linkform">
+  <button class="btn btn-warning righty" ng-click="formOpen = !formOpen">New Post</button>
   <div ng-show="formOpen">
       <form novalidate name="$ctrl.linkform" ng-submit=$ctrl.addlink()>
         <div class="form-group" ng-class="{'has-error' : $ctrl.linkform.title.$invalid}">
