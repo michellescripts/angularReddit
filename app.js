@@ -1,5 +1,5 @@
 (function () {
-  angular.module('app', [])
+  angular.module('app', ['angularMoment'])
 	 .component('redditpage', {
    controller: function () {
      const vm = this
@@ -11,7 +11,7 @@
      ]
      vm.addlink = function () {
        vm.link['votes'] = 0
-       vm.link['date'] = new Date().toLocaleDateString()
+       vm.link['date'] = new Date()
        console.log(vm.link)
        vm.links.push(vm.link)
        delete vm.link
