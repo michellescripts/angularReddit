@@ -1,162 +1,122 @@
-<section class="linkform">
-
- <button class="btn btn-warning" ng-click="formOpen = !formOpen">New Post</button>
-   <div ng-show="formOpen">
-
-   <form novalidate name="$ctrl.linkform" ng-submit=$ctrl.addlink() >
-
-  <div class="form-group"
-     ng-class= "{'has-error' : $ctrl.linkform.title.$invalid}">
-       <label for="title">Title</label>
-       <input ng-model="$ctrl.link.title" required type="text" class="form-control" name="title" id="title"  ng-minlength=3 ng-maxlength=20 required>
-       <div class="error"
-       ng-show="$ctrl.linkform.title.$dirty && $ctrl.linkform.title.$invalid">
-         <small class="error"
-         ng-show="$ctrl.linkform.title.$error.required">
-             Your title is required.
-         </small>
-         <small class="error"
-           ng-show="$ctrl.linkform.title.$error.minlength">
-           Your title is required to be at least 3 characters
-         </small>
-         <small class="error"
-            ng-show="$ctrl.linkform.title.$error.maxlength">
-            Your title cannot be longer than 20 characters
-         </small>
-   </div>
- </div>
-
-   <div class="form-group"
-      ng-class= "{'has-error' : $ctrl.linkform.body.$invalid}">
-        <label for="body">Body</label>
-        <input ng-model="$ctrl.link.body" required type="text" class="form-control" name="body" id="body"  ng-minlength=3 ng-maxlength=200 required>
-        <div class="error"
-        ng-show="$ctrl.linkform.body.$dirty && $ctrl.linkform.body.$invalid">
-          <small class="error"
-          ng-show="$ctrl.linkform.body.$error.required">
-              Your body is required.
-          </small>
-          <small class="error"
-            ng-show="$ctrl.linkform.body.$error.minlength">
-            Your body is required to be at least 3 characters
-          </small>
-          <small class="error"
-             ng-show="$ctrl.linkform.body.$error.maxlength">
-             Your body cannot be longer than 20 characters
-          </small>
+<div class="flex sort-bar">
+  <div class="row">
+    <div class="search container">
+        <label class="label label-info">Search:</label><input ng-model="searchLinks">
+    </div>
+    <div class="sort container">
+        <label class="label label-info">Sort:</label>
+        <!-- <select ng-model="selected" ng-options="f.votes for f in links | orderBy:'votes'"> -->
+        <select ng-model="sortLinks" class="btn btn-warning">
+           <option value="">---Select---</option>
+           <option value="-votes">Votes</option>
+           <option value="title">Title</option>
+           <option value="link.date">Date</option>
+            <!-- ng-click="formOpen = !formOpen" -->
+        </select>
     </div>
   </div>
-
-    <div class="form-group"
-       ng-class= "{'has-error' : $ctrl.linkform.author.$invalid}">
-         <label for="author">Author</label>
-         <input ng-model="$ctrl.link.author" required type="text" class="form-control" name="author" id="author"  ng-minlength=3 ng-maxlength=20 required>
-         <div class="error"
-         ng-show="$ctrl.linkform.author.$dirty && $ctrl.linkform.author.$invalid">
-           <small class="error"
-           ng-show="$ctrl.linkform.author.$error.required">
-               Your author is required.
-           </small>
-           <small class="error"
-             ng-show="$ctrl.linkform.author.$error.minlength">
-             Your author is required to be at least 3 characters
-           </small>
-           <small class="error"
-              ng-show="$ctrl.linkform.author.$error.maxlength">
-              Your author cannot be longer than 20 characters
-           </small>
-     </div>
-   </div>
-
-     <div class="form-group"
-        ng-class= "{'has-error' : $ctrl.linkform.imageUrl.$invalid}">
-          <label for="imageUrl">Image Url</label>
-          <input ng-model="$ctrl.link.imageUrl" required type="text" class="form-control" name="imageUrl" id="imageUrl"  ng-minlength=3 required>
-          <div class="error"
-          ng-show="$ctrl.linkform.imageUrl.$dirty && $ctrl.linkform.imageUrl.$invalid">
-            <small class="error"
-            ng-show="$ctrl.linkform.imageUrl.$error.required">
+<section class="linkform pull-right">
+  <button class="btn btn-warning" ng-click="formOpen = !formOpen">New Post</button>
+  <div ng-show="formOpen">
+      <form novalidate name="$ctrl.linkform" ng-submit=$ctrl.addlink()>
+        <div class="form-group" ng-class="{'has-error' : $ctrl.linkform.title.$invalid}">
+            <label for="title">Title</label>
+            <input ng-model="$ctrl.link.title" required type="text" class="form-control" name="title" id="title" ng-minlength=3 ng-maxlength=20 required>
+            <div class="error" ng-show="$ctrl.linkform.title.$dirty && $ctrl.linkform.title.$invalid">
+                <small class="error" ng-show="$ctrl.linkform.title.$error.required">
+                  Your title is required.
+                </small>
+                <small class="error" ng-show="$ctrl.linkform.title.$error.minlength">
+                  Your title is required to be at least 3 characters
+                </small>
+                <small class="error" ng-show="$ctrl.linkform.title.$error.maxlength">
+                  Your title cannot be longer than 20 characters
+                </small>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : $ctrl.linkform.body.$invalid}">
+            <label for="body">Body</label>
+            <input ng-model="$ctrl.link.body" required type="text" class="form-control" name="body" id="body" ng-minlength=3 ng-maxlength=200 required>
+            <div class="error" ng-show="$ctrl.linkform.body.$dirty && $ctrl.linkform.body.$invalid">
+                <small class="error" ng-show="$ctrl.linkform.body.$error.required">
+                  Your body is required.
+                </small>
+                <small class="error" ng-show="$ctrl.linkform.body.$error.minlength">
+                  Your body is required to be at least 3 characters
+                </small>
+                <small class="error" ng-show="$ctrl.linkform.body.$error.maxlength">
+                  Your body cannot be longer than 20 characters
+                </small>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : $ctrl.linkform.author.$invalid}">
+            <label for="author">Author</label>
+            <input ng-model="$ctrl.link.author" required type="text" class="form-control" name="author" id="author" ng-minlength=3 ng-maxlength=20 required>
+            <div class="error" ng-show="$ctrl.linkform.author.$dirty && $ctrl.linkform.author.$invalid">
+              <small class="error" ng-show="$ctrl.linkform.author.$error.required">
+                Your author is required.
+              </small>
+              <small class="error" ng-show="$ctrl.linkform.author.$error.minlength">
+                Your author is required to be at least 3 characters
+              </small>
+              <small class="error" ng-show="$ctrl.linkform.author.$error.maxlength">
+                Your author cannot be longer than 20 characters
+              </small>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : $ctrl.linkform.imageUrl.$invalid}">
+            <label for="imageUrl">Image Url</label>
+            <input ng-model="$ctrl.link.imageUrl" required type="text" class="form-control" name="imageUrl" id="imageUrl" ng-minlength=3 required>
+            <div class="error" ng-show="$ctrl.linkform.imageUrl.$dirty && $ctrl.linkform.imageUrl.$invalid">
+              <small class="error" ng-show="$ctrl.linkform.imageUrl.$error.required">
                 Your imageUrl is required.
-            </small>
-            <small class="error"
-              ng-show="$ctrl.linkform.imageUrl.$error.minlength">
-              Your imageUrl is required to be at least 3 characters
-            </small>
-      </div>
+              </small>
+              <small class="error" ng-show="$ctrl.linkform.imageUrl.$error.minlength">
+                Your imageUrl is required to be at least 3 characters
+              </small>
+            </div>
+        </div>
+        <button class="btn btn-default" type="submit" ng-click="formOpen = !formOpen">Add Link</button>
+      </form>
     </div>
-
-     <button class="btn btn-default" type="submit" ng-click="formOpen = !formOpen">Add Link</button>
-   </form>
-   </div>
-   </section>
-
-         <div class="search container">
-           <label class="label label-info">Search:</label><input ng-model="searchLinks">
-         </div>
-
-         <div class="sort container">
-           <label class="label label-info">Sort:</label>
-           <!-- <select ng-model="selected" ng-options="f.votes for f in links | orderBy:'votes'"> -->
-           <select ng-model="sortLinks" class="btn btn-warning">
-             <option value="">---Select---</option>
-             <option value="votes">Votes</option>
-             <option value="title">Title</option>
-             <option value="date">Date</option>
-              <!-- ng-click="formOpen = !formOpen" -->
-           </select>
-
-         </div>
-
-
-
-
-
-   <section class="list containter .col-md-12">
-     <div ng-repeat="link in $ctrl.links | filter:searchLinks | orderBy:sortLinks">
-
-     <div class="container panel text-center .col-md-12">
-     <div class="flex">
-
-       <div class="col">
-        <img src={{link.imageUrl}} width="80" class="imgUrl">
-        <button ng-click="$ctrl.deletelink($event, link)" class="btn btn-danger">Delete</button>
-      </div>
-
-        <div class="col spacey">
-           <h2>{{link.title}}</h2>
-           <h3>By: {{link.author}}</h3>
-           <h4>Added: <span am-time-ago="link.date"></span> </h4>
-
-           <p>{{link.body}}</p>
-
-
-
-           <h3>Votes:</h3>
-           <div class="flex">
-           <button class="btn btn-info" ng-click="$ctrl.increaseVotes($event, link)">&uarr;</button>
-                <h4 class="spacey">{{link.votes}}</h4>
-           <button class="btn btn-success" ng-click="$ctrl.decreaseVotes($event, link)">&darr;</button>
-         </div>
- </div>
+</section>
 </div>
 
-         <div class="panel panel-default">
-           <div class="panel-heading" ng-click="commentOpen = !commentOpen">{{link.comments.length || 0}} Comments</div>
-           <div ng-show="commentOpen" class="panel-body">
-             <div ng-repeat="comment in link.comments">
-                <p>{{comment}}</p>
-             </div>
-             <!-- For comments -->
-             <form name="$ctrl.commentform" ng-submit=$ctrl.addComment(link)>
-               <input ng-model="$ctrl.link.comments" required type="text" class="form-control" name="comments" id="comments">
-                <button class="btn btn-default" type="submit" ng-click="commentOpen = !commentOpen">Add Comment</button>
-            </form>
-           </div>
-         </div>
 
-
-
-     </div>
-     </div>
-
-   </section>
+<section class="list containter .col-md-12">
+  <div ng-repeat="link in $ctrl.links | filter:searchLinks | orderBy:sortLinks">
+    <div class="container panel text-center .col-md-12">
+      <div class="flex">
+        <div class="col">
+          <img src={{link.imageUrl}} width="200px" class="imgUrl">
+          <button ng-click="$ctrl.deletelink($event, link)" class="btn btn-danger">Delete</button>
+        </div>
+        <div class="col spacey">
+          <h2>{{link.title}}</h2>
+          <h3>Votes:</h3>
+          <div class="flex">
+            <button class="btn btn-info" ng-click="$ctrl.increaseVotes($event, link)">&uarr;</button>
+            <h4 class="spacey">{{link.votes}}</h4>
+            <button class="btn btn-success" ng-click="$ctrl.decreaseVotes($event, link)">&darr;</button>
+          </div>
+          <h3>By: {{link.author}}</h3>
+          <h4>Added: <span am-time-ago="link.date"></span> </h4>
+          <p>{{link.body}}</p>
+        </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" ng-click="commentOpen = !commentOpen">{{link.comments.length || 0}} Comments</div>
+      <div ng-show="commentOpen" class="panel-body">
+          <div ng-repeat="comment in link.comments">
+              <p>{{comment}}</p>
+          </div>
+          <!-- For comments -->
+          <form name="$ctrl.commentform" ng-submit=$ctrl.addComment(link)>
+              <input ng-model="$ctrl.link.comments" required type="text" class="form-control" name="comments" id="comments">
+              <button class="btn btn-default" type="submit" ng-click="commentOpen = !commentOpen">Add Comment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
