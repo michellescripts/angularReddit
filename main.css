@@ -75,18 +75,3 @@ main {margin: 50px;}
   padding-top: 10px;
   padding-left: 15px;
 }
-
-.sort-bar {
-  margin-bottom: 50px;
-  margin-left: 50px;
-}
-
-.sort {
-  margin-left: 10px;
-}
-
-.righty {
-  position: absolute;
-  right: 50px;
-  padding: 10px;
-}
