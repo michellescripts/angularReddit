@@ -8,7 +8,6 @@ exports.up = function (knex, Promise) {
     table.integer('votes')
     table.string('date')
     table.string('imageUrl')
-    table.string('comments')
   })
 }
 
