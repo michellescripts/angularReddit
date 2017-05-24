@@ -1,7 +1,7 @@
 {
   "name": "angular-reddit",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "bin/www",
   "license": "MIT",
   "scripts": {
     "start": "node bin/www"

@@ -1,10 +1,10 @@
 <section class="linkform">
   <button class="btn btn-warning righty" ng-click="formOpen = !formOpen">New Post</button>
   <div ng-show="formOpen">
-      <form novalidate name="$ctrl.linkform" ng-submit=$ctrl.addlink()>
+      <form novalidate ng-submit=$ctrl.addlink()>
         <div class="form-group" ng-class="{'has-error' : $ctrl.linkform.title.$invalid}">
             <label for="title">Title</label>
-            <input ng-model="$ctrl.link.title" required type="text" class="form-control" name="title" id="title" ng-minlength=3 ng-maxlength=20 required>
+            <input ng-model="$ctrl.newlink.title" required type="text" class="form-control" name="title" id="title" ng-minlength=3 ng-maxlength=20 required>
             <div class="error" ng-show="$ctrl.linkform.title.$dirty && $ctrl.linkform.title.$invalid">
                 <small class="error" ng-show="$ctrl.linkform.title.$error.required">
                   Your title is required.
@@ -19,7 +19,7 @@
         </div>
         <div class="form-group" ng-class="{'has-error' : $ctrl.linkform.body.$invalid}">
             <label for="body">Body</label>
-            <input ng-model="$ctrl.link.body" required type="text" class="form-control" name="body" id="body" ng-minlength=3 ng-maxlength=200 required>
+            <input ng-model="$ctrl.newlink.body" required type="text" class="form-control" name="body" id="body" ng-minlength=3 ng-maxlength=200 required>
             <div class="error" ng-show="$ctrl.linkform.body.$dirty && $ctrl.linkform.body.$invalid">
                 <small class="error" ng-show="$ctrl.linkform.body.$error.required">
                   Your body is required.
@@ -34,7 +34,7 @@
         </div>
         <div class="form-group" ng-class="{'has-error' : $ctrl.linkform.author.$invalid}">
             <label for="author">Author</label>
-            <input ng-model="$ctrl.link.author" required type="text" class="form-control" name="author" id="author" ng-minlength=3 ng-maxlength=20 required>
+            <input ng-model="$ctrl.newlink.author" required type="text" class="form-control" name="author" id="author" ng-minlength=3 ng-maxlength=20 required>
             <div class="error" ng-show="$ctrl.linkform.author.$dirty && $ctrl.linkform.author.$invalid">
               <small class="error" ng-show="$ctrl.linkform.author.$error.required">
                 Your author is required.
@@ -49,7 +49,7 @@
         </div>
         <div class="form-group" ng-class="{'has-error' : $ctrl.linkform.imageUrl.$invalid}">
             <label for="imageUrl">Image Url</label>
-            <input ng-model="$ctrl.link.imageUrl" required type="text" class="form-control" name="imageUrl" id="imageUrl" ng-minlength=3 required>
+            <input ng-model="$ctrl.newlink.imageUrl" required type="text" class="form-control" name="imageUrl" id="imageUrl" ng-minlength=3 required>
             <div class="error" ng-show="$ctrl.linkform.imageUrl.$dirty && $ctrl.linkform.imageUrl.$invalid">
               <small class="error" ng-show="$ctrl.linkform.imageUrl.$error.required">
                 Your imageUrl is required.
@@ -89,6 +89,31 @@
         <div class="col">
           <img ng-src="{{link.imageUrl}}" width="200px" class="imgUrl">
           <button ng-click="$ctrl.deletelink($event, link)" class="btn btn-danger">Delete</button>
+
+          <button class="btn btn-danger" ng-click="formOpen = !formOpen" >edit</button>
+          <div ng-show="formOpen">
+          <form ng-model="editForm" ng-submit="$ctrl.editLink($ctrl.editForm, link.id)">
+           <input type='hidden' ng-model="$ctrl.editForm.id" name='id' ng-value="$ctrl.editForm.id">
+            <p>
+              Title: <input ng-model="$ctrl.editForm.title" name='title' id="edit-title" placeholder="{{link.title}}">
+            </p>
+            <p>
+              Body: <input ng-model="$ctrl.editForm.body" name='body' id="edit-body" placeholder="{{link.body}}">
+            </p>
+            <p>
+              Author: <input ng-model="$ctrl.editForm.author" name='author' id="edit-author" placeholder="{{link.author}}">
+            </p>
+            <p>
+              Image: <input ng-model="$ctrl.editForm.imageUrl" name='imageUrl' id="edit-imageUrl" placeholder="{{link.imageUrl}}">
+            </p>
+            <p>
+              <button ng-click="formOpen = !formOpen" type="submit">Update Link</button>
+            </p>
+          </form>
+        </div>
+
+
+
         </div>
         <div class="col spacey">
           <h2>{{link.title}}</h2>

@@ -10,24 +10,31 @@
     const vm = this
 
     vm.$onInit = function () {
-      console.log('hit app.module')
       $http.get('/api/queries').then(function (response) {
-        console.log(response.data)
         vm.links = response.data
       })
     }
-
     vm.addlink = function () {
-      vm.link['votes'] = 0
-      vm.link['date'] = new Date()
-      console.log(vm.link)
-      vm.links.push(vm.link)
-      delete vm.link
+      $http.post('/api/queries/', vm.newlink).then(function (response) {
+        vm.links.push(response.data)
+      })
     }
     vm.deletelink = function (e, link) {
       e.preventDefault()
-      vm.links.splice(vm.links.indexOf(link), 1)
+      $http.delete('/api/queries/' + link['id']).then(res => {
+        vm.links.splice(vm.links.indexOf(link), 1)
+      })
     }
+    vm.editLink = function (link, id) {
+      link['id'] = id
+      $http.patch('/api/queries/' + id, link).then(res => {
+        vm.links.splice(vm.links.indexOf(link), 1)
+        vm.links.push(res.data)
+      })
+    }
+
+// TODO:
+
     vm.addComment = function (link) {
       link.comments.push(vm.link['comments'])
       delete vm.link
