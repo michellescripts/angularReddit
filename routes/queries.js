@@ -24,6 +24,13 @@ app.get('/', (req, res, next) => {
     .catch(err => next(err))
 })
 
+app.get('/:id', (req, res, next) => {
+  pg('hikes')
+  .where({id: req.params.id})
+  .then(hikes => res.json(hikes[0]))
+  .catch(err => next(err))
+})
+
 app.post('/', (req, res, next) => {
   pg('hikes')
     .insert(req.body)

@@ -1,0 +1,21 @@
+<!-- <div ng-show="formOpen"> -->
+<h1>EDIT: {{$ctrl.hike.title}}</h1>
+<form ng-model="editForm" ng-submit="$ctrl.editLink($ctrl.editForm, $ctrl.hike.id)">
+ <input type='hidden' ng-model="$ctrl.editForm.id" name='id' ng-value="$ctrl.editForm.id">
+  <p>
+    Title: <input ng-model="$ctrl.editForm.title" name='title' id="edit-title" placeholder="{{$ctrl.hike.title}}">
+  </p>
+  <p>
+    Body: <input ng-model="$ctrl.editForm.body" name='body' id="edit-body" placeholder="{{$ctrl.hike.body}}">
+  </p>
+  <p>
+    Author: <input ng-model="$ctrl.editForm.author" name='author' id="edit-author" placeholder="{{$ctrl.hike.author}}">
+  </p>
+  <p>
+    Image: <input ng-model="$ctrl.editForm.imageUrl" name='imageUrl' id="edit-imageUrl" placeholder="{{$ctrl.hike.imageUrl}}">
+  </p>
+  <p>
+    <button ng-click="formOpen = !formOpen" type="submit">Update Link</button>
+  </p>
+</form>
+<!-- </div> -->

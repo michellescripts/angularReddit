@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" >
     <link rel="stylesheet" href="main.css">
-    <title></title>
+    <title>Hikes</title>
+    <base href="/">
     <style>
       /*body {margin: 50px;}*/
     </style>
@@ -33,15 +34,20 @@
 
   <body>
 <main>
-    <redditpage></redditpage>
+  <!-- <redditpage></redditpage> -->
+  <ui-view></ui-view>
 </main>
-
-
     <script src="/node_modules/angular/angular.min.js"></script>
+    <script src="https://unpkg.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.js"></script>
     <script src="app.module.js" charset="utf-8"></script>
-
+    <script src="./app.config.js" charset="utf-8"></script>
+    <script src="./app.comment.js" charset="utf-8"></script>
+    <script src="./app.list.js" charset="utf-8"></script>
     <script src="/node_modules/moment/moment.js"></script>
     <script src="/node_modules/angular-moment/angular-moment.js"></script>
+
+
+
 
   </body>
 </html>
