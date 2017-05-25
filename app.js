@@ -8,6 +8,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
 
 app.use('/api/queries', require('./routes/queries'))
+app.use('/api/cqueries', require('./routes/cqueries'))
 
 // app.use('*', function (req, res, next) {
 //   res.sendFile('index.html', {root: path.join(__dirname, 'public')})

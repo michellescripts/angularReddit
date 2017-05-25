@@ -132,11 +132,11 @@
       <div class="panel-heading" ng-click="commentOpen = !commentOpen">{{link.comments.length || 0}} Comments</div>
       <div ng-show="commentOpen" class="panel-body">
           <div ng-repeat="comment in link.comments">
-              <p>{{comment}}</p>
+              <p>{{comment.comments}}</p>
           </div>
           <!-- For comments -->
           <form name="$ctrl.commentform" ng-submit=$ctrl.addComment(link)>
-              <input ng-model="$ctrl.link.comments" required type="text" class="form-control" name="comments" id="comments">
+              <input ng-model="$ctrl.newComment.comments" required type="text" class="form-control" name="comments" id="comments">
               <button class="btn btn-default" type="submit" ng-click="commentOpen = !commentOpen">Add Comment</button>
           </form>
         </div>

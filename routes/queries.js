@@ -6,8 +6,20 @@ const pg = require('knex')(config[environment])
 
 app.get('/', (req, res, next) => {
   pg('hikes')
-    .then(hikes => {
-      res.json(hikes)
+    .then(links => {
+      return pg('comment')
+        .whereIn('link_id', links.map(p => p.id))
+        .then((comments) => {
+          const commentsByLinkId = comments.reduce((result, comment) => {
+            result[comment.link_id] = result[comment.link_id] || []
+            result[comment.link_id].push(comment)
+            return result
+          }, {})
+          links.forEach(link => {
+            link.comments = commentsByLinkId[link.id] || []
+          })
+          res.json(links)
+        })
     })
     .catch(err => next(err))
 })

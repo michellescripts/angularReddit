@@ -32,16 +32,13 @@
         vm.links.push(res.data)
       })
     }
-
-// TODO:
-
-    vm.addComment = function (link) {
-      link.comments.push(vm.link['comments'])
-      delete vm.link
-    }
     vm.increaseVotes = function (e, link) {
       e.preventDefault()
       link.votes++
+      $http.patch('/api/cqueries/' + link['id'], link).then(res => {
+        vm.links.splice(vm.links.indexOf(link), 1)
+        vm.links.push(res.data)
+      })
     }
     vm.decreaseVotes = function (e, link) {
       e.preventDefault()
@@ -50,6 +47,17 @@
       } else {
         link.votes = 0
       }
+      $http.patch('/api/cqueries/' + link['id'], link).then(res => {
+        vm.links.splice(vm.links.indexOf(link), 1)
+        vm.links.push(res.data)
+      })
+    }
+    vm.addComment = function (link) {
+      const linkId = link['id']
+      $http.post('/api/cqueries/' + linkId, vm.newComment).then(res => {
+        link.comments.push(vm.newComment)
+        delete vm.newComment
+      })
     }
   }
 })()

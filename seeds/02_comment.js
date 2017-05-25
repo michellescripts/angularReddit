@@ -6,67 +6,67 @@ exports.seed = function (knex, Promise) {
       // Inserts seed entries
       return knex('comment').insert([
         {
-          id: 1,
+          id: 100,
           link_id: 100,
           comments: 'nice'
         },
         {
-          id: 2,
+          id: 200,
           link_id: 100,
           comments: 'great hike'
         },
         {
-          id: 3,
+          id: 300,
           link_id: 100,
           comments: 'a comment?'
         },
         {
-          id: 4,
+          id: 400,
           link_id: 100,
           comments: 'ipsum here'
         },
         {
-          id: 5,
+          id: 500,
           link_id: 200,
           comments: 'a hike'
         },
         {
-          id: 6,
+          id: 600,
           link_id: 200,
           comments: 'we had fun'
         },
         {
-          id: 7,
+          id: 700,
           link_id: 200,
           comments: 'sure?'
         },
         {
-          id: 8,
+          id: 800,
           link_id: 300,
           comments: 'Red rocks'
         },
         {
-          id: 9,
+          id: 900,
           link_id: 300,
           comments: 'Hilly'
         },
         {
-          id: 10,
+          id: 1000,
           link_id: 300,
           comments: 'Warm'
         },
         {
-          id: 11,
+          id: 1100,
           link_id: 400,
           comments: 'best'
         },
         {
-          id: 12,
+          id: 1200,
           link_id: 400,
           comments: 'comments'
         },
         {
-          id: 13,
+          id: 1300,
           link_id: 400,
           comments: 'i think'
         }
