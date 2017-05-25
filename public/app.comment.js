@@ -15,8 +15,12 @@
       const linkId = $state.params.id
       $http.get('/api/queries/' + linkId).then(function (response) {
         vm.hike = response.data
-        console.log('title is')
-        console.log(vm.hike.title)
+      })
+    }
+    vm.editLink = function (link, id) {
+      link['id'] = id
+      $http.patch('/api/queries/' + id, link).then(res => {
+        $state.go('home')
       })
     }
   }

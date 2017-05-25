@@ -1,4 +1,4 @@
-<!-- <div ng-show="formOpen"> -->
+
 <h1>EDIT: {{$ctrl.hike.title}}</h1>
 <form ng-model="editForm" ng-submit="$ctrl.editLink($ctrl.editForm, $ctrl.hike.id)">
  <input type='hidden' ng-model="$ctrl.editForm.id" name='id' ng-value="$ctrl.editForm.id">
@@ -15,7 +15,6 @@
     Image: <input ng-model="$ctrl.editForm.imageUrl" name='imageUrl' id="edit-imageUrl" placeholder="{{$ctrl.hike.imageUrl}}">
   </p>
   <p>
-    <button ng-click="formOpen = !formOpen" type="submit">Update Link</button>
+    <button type="submit">Update Link</button>
   </p>
 </form>
-<!-- </div> -->
